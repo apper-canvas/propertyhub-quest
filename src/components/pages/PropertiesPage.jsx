@@ -3,7 +3,8 @@ import { toast } from 'react-toastify';
 import ApperIcon from '@/components/ApperIcon';
 import Button from '@/components/atoms/Button';
 import SearchInput from '@/components/molecules/SearchInput';
-import FilterButton from '@/components/molecules/FilterButton';
+import StatusToggleFilter from '@/components/molecules/StatusToggleFilter';
+import TypeDropdownFilter from '@/components/molecules/TypeDropdownFilter';
 import PropertyListings from '@/components/organisms/PropertyListings';
 import { propertyService } from '@/services';
 
@@ -12,8 +13,8 @@ const PropertiesPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedStatus, setSelectedStatus] = useState('all');
-const [selectedType, setSelectedType] = useState('all');
+  const [selectedStatuses, setSelectedStatuses] = useState(['all']);
+  const [selectedType, setSelectedType] = useState('all');
   const [showAddModal, setShowAddModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [editingProperty, setEditingProperty] = useState(null);
@@ -47,9 +48,9 @@ const [selectedType, setSelectedType] = useState('all');
     }
   };
 
-  const filteredProperties = properties.filter(property => {
+const filteredProperties = properties.filter(property => {
     const matchesSearch = property.address.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesStatus = selectedStatus === 'all' || property.status === selectedStatus;
+    const matchesStatus = selectedStatuses.includes('all') || selectedStatuses.includes(property.status);
     const matchesType = selectedType === 'all' || property.type === selectedType;
     return matchesSearch && matchesStatus && matchesType;
   });
@@ -189,12 +190,12 @@ const [selectedType, setSelectedType] = useState('all');
     );
   }
 
-  return (
+return (
     <div className="p-6">
       <div className="max-w-7xl mx-auto">
-        {/* Search and Filters */}
+        {/* Search and Add Property */}
         <div className="mb-6">
-          <div className="flex flex-col sm:flex-row gap-4 mb-4">
+          <div className="flex flex-col sm:flex-row gap-4 mb-6">
             <SearchInput
               placeholder="Search properties by address..."
               value={searchTerm}
@@ -209,31 +210,17 @@ const [selectedType, setSelectedType] = useState('all');
             </Button>
           </div>
           
-          {/* Filters */}
-          <div className="flex flex-wrap gap-4">
-            <div className="flex gap-2">
-              <span className="text-sm font-medium text-gray-700 py-1">Status:</span>
-              {['all', 'active', 'pending', 'sold', 'withdrawn'].map((status) => (
-                <FilterButton
-                  key={status}
-                  label={status.charAt(0).toUpperCase() + status.slice(1)}
-                  onClick={() => setSelectedStatus(status)}
-                  isActive={selectedStatus === status}
-                />
-              ))}
-            </div>
+          {/* Modern Filters */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-6 bg-white rounded-xl shadow-sm border border-gray-100">
+            <StatusToggleFilter
+              selectedStatuses={selectedStatuses}
+              onStatusToggle={setSelectedStatuses}
+            />
             
-            <div className="flex gap-2">
-              <span className="text-sm font-medium text-gray-700 py-1">Type:</span>
-              {['all', 'house', 'condo', 'townhouse', 'land'].map((type) => (
-                <FilterButton
-                  key={type}
-                  label={type.charAt(0).toUpperCase() + type.slice(1)}
-                  onClick={() => setSelectedType(type)}
-                  isActive={selectedType === type}
-                />
-              ))}
-            </div>
+            <TypeDropdownFilter
+              selectedType={selectedType}
+              onTypeChange={setSelectedType}
+            />
           </div>
         </div>
 {/* Properties Grid */}
