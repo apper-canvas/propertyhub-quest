@@ -11,7 +11,9 @@ const TasksPage = () => {
   const [error, setError] = useState(null);
   const [selectedPriority, setSelectedPriority] = useState('all');
   const [selectedStatus, setSelectedStatus] = useState('all');
-  const [showAddModal, setShowAddModal] = useState(false);
+const [showAddModal, setShowAddModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [editingTask, setEditingTask] = useState(null);
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -101,7 +103,62 @@ const TasksPage = () => {
       toast.error('Failed to create task');
     } finally {
       setFormLoading(false);
+}
+  };
+
+  const handleTaskUpdate = (task) => {
+    setEditingTask(task);
+    setFormData({
+      title: task.title,
+      description: task.description || '',
+      priority: task.priority,
+      dueDate: task.dueDate || '',
+      assignedTo: task.assignedTo || ''
+    });
+    setShowEditModal(true);
+  };
+
+  const handleTaskDelete = async (taskId) => {
+    try {
+      await taskService.delete(taskId);
+      setTasks(prev => prev.filter(t => t.id !== taskId));
+      toast.success('Task deleted successfully');
+    } catch (err) {
+      toast.error('Failed to delete task');
     }
+  };
+
+  const handleEditSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!formData.title.trim()) {
+      toast.error('Please enter a task title');
+      return;
+    }
+
+    setFormLoading(true);
+    try {
+      const updatedTask = await taskService.update(editingTask.id, formData);
+      setTasks(prev => prev.map(t => t.id === editingTask.id ? updatedTask : t));
+      toast.success('Task updated successfully!');
+      handleCloseEditModal();
+    } catch (err) {
+      toast.error('Failed to update task');
+    } finally {
+      setFormLoading(false);
+    }
+  };
+
+  const handleCloseEditModal = () => {
+    setShowEditModal(false);
+    setEditingTask(null);
+    setFormData({
+      title: '',
+      description: '',
+      priority: 'medium',
+      dueDate: '',
+      assignedTo: ''
+    });
   };
   if (error) {
     return (
@@ -124,7 +181,7 @@ const TasksPage = () => {
 return (
     <div className="p-6">
       <div className="max-w-4xl mx-auto">
-        <TaskManagement
+<TaskManagement
           tasks={filteredTasks}
           selectedPriority={selectedPriority}
           setSelectedPriority={setSelectedPriority}
@@ -132,6 +189,8 @@ return (
           setSelectedStatus={setSelectedStatus}
           onToggleTaskStatus={toggleTaskStatus}
           onAddTaskClick={handleAddTaskClick}
+          onTaskUpdate={handleTaskUpdate}
+          onTaskDelete={handleTaskDelete}
           loading={loading}
         />
 
@@ -239,6 +298,118 @@ return (
                       className="flex-1 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50"
                     >
                       {formLoading ? 'Creating...' : 'Create Task'}
+                    </Button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+)}
+
+        {/* Edit Task Modal */}
+        {showEditModal && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+            <div className="bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto">
+              <div className="p-6">
+                <div className="flex justify-between items-center mb-4">
+                  <h2 className="text-xl font-semibold text-gray-900">Edit Task</h2>
+                  <button
+                    onClick={handleCloseEditModal}
+                    className="text-gray-400 hover:text-gray-600"
+                  >
+                    <ApperIcon name="X" size={24} />
+                  </button>
+                </div>
+
+                <form onSubmit={handleEditSubmit} className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Title *
+                    </label>
+                    <input
+                      type="text"
+                      name="title"
+                      value={formData.title}
+                      onChange={handleInputChange}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      placeholder="Enter task title"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Description
+                    </label>
+                    <textarea
+                      name="description"
+                      value={formData.description}
+                      onChange={handleInputChange}
+                      rows={3}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      placeholder="Task description..."
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Priority
+                      </label>
+                      <select
+                        name="priority"
+                        value={formData.priority}
+                        onChange={handleInputChange}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      >
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Due Date
+                      </label>
+                      <input
+                        type="date"
+                        name="dueDate"
+                        value={formData.dueDate}
+                        onChange={handleInputChange}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Assigned To
+                    </label>
+                    <input
+                      type="text"
+                      name="assignedTo"
+                      value={formData.assignedTo}
+                      onChange={handleInputChange}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      placeholder="Enter assignee name"
+                    />
+                  </div>
+
+                  <div className="flex gap-3 pt-4">
+                    <Button
+                      type="button"
+                      onClick={handleCloseEditModal}
+                      className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      type="submit"
+                      disabled={formLoading}
+                      className="flex-1 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50"
+                    >
+                      {formLoading ? 'Updating...' : 'Update Task'}
                     </Button>
                   </div>
                 </form>

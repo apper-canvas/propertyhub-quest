@@ -4,7 +4,7 @@ import EmptyState from '@/components/molecules/EmptyState';
 import Button from '@/components/atoms/Button';
 import ApperIcon from '@/components/ApperIcon';
 
-const ContactDirectory = ({ contacts, searchTerm, onAddContactClick, loading }) => {
+const ContactDirectory = ({ contacts, searchTerm, onAddContactClick, onContactUpdate, onContactDelete, loading }) => {
     if (loading) {
         return (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -49,9 +49,15 @@ const ContactDirectory = ({ contacts, searchTerm, onAddContactClick, loading }) 
                     )}
                 </EmptyState>
             ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {contacts.map((contact, index) => (
-                        <ContactCard key={contact.id} contact={contact} index={index} />
+                        <ContactCard 
+                            key={contact.id} 
+                            contact={contact} 
+                            index={index}
+                            onContactUpdate={onContactUpdate}
+                            onContactDelete={onContactDelete}
+                        />
                     ))}
                 </div>
             )}

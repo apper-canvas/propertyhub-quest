@@ -4,7 +4,7 @@ import EmptyState from '@/components/molecules/EmptyState';
 import Button from '@/components/atoms/Button';
 import ApperIcon from '@/components/ApperIcon';
 
-const PropertyListings = ({ properties, searchTerm, onAddPropertyClick, loading }) => {
+const PropertyListings = ({ properties, searchTerm, onAddPropertyClick, onPropertyUpdate, onPropertyDelete, loading }) => {
     if (loading) {
         return (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -47,9 +47,15 @@ const PropertyListings = ({ properties, searchTerm, onAddPropertyClick, loading 
                     )}
                 </EmptyState>
             ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {properties.map((property, index) => (
-                        <PropertyCard key={property.id} property={property} index={index} />
+                        <PropertyCard 
+                            key={property.id} 
+                            property={property} 
+                            index={index}
+                            onPropertyUpdate={onPropertyUpdate}
+                            onPropertyDelete={onPropertyDelete}
+                        />
                     ))}
                 </div>
             )}
