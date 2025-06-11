@@ -1,0 +1,67 @@
+[
+  {
+    "id": "1",
+    "contactId": "1",
+    "contactName": "Sarah Johnson",
+    "propertyId": "1",
+    "propertyAddress": "1234 Oak Street, Springfield, IL",
+    "stage": "showing",
+    "value": 425000,
+    "commission": 12750,
+    "notes": "Second showing scheduled. Very interested in the property. Waiting for pre-approval letter.",
+    "createdAt": "2024-01-18T10:30:00.000Z",
+    "closedAt": null
+  },
+  {
+    "id": "2",
+    "contactId": "2",
+    "contactName": "Michael Chen",
+    "propertyId": "3",
+    "propertyAddress": "9012 Pine Road, Springfield, IL",
+    "stage": "contract",
+    "value": 525000,
+    "commission": 15750,
+    "notes": "Contract signed. Inspection scheduled for next week. Closing date set for February 15th.",
+    "createdAt": "2024-01-12T14:20:00.000Z",
+    "closedAt": null
+  },
+  {
+    "id": "3",
+    "contactId": "3",
+    "contactName": "Emily Rodriguez",
+    "propertyId": "2",
+    "propertyAddress": "5678 Maple Avenue, Springfield, IL",
+    "stage": "offer",
+    "value": 285000,
+    "commission": 8550,
+    "notes": "Offer submitted at asking price. Seller reviewing multiple offers. Decision expected by end of week.",
+    "createdAt": "2024-01-19T16:45:00.000Z",
+    "closedAt": null
+  },
+  {
+    "id": "4",
+    "contactId": "4",
+    "contactName": "Robert Kim",
+    "propertyId": "4",
+    "propertyAddress": "3456 Elm Street, Springfield, IL",
+    "stage": "closed",
+    "value": 195000,
+    "commission": 5850,
+    "notes": "Deal closed successfully. Cash purchase. Client interested in more investment properties.",
+    "createdAt": "2024-01-10T11:30:00.000Z",
+    "closedAt": "2024-01-25T15:00:00.000Z"
+  },
+  {
+    "id": "5",
+    "contactId": "5",
+    "contactName": "Jennifer Davis",
+    "propertyId": "5",
+    "propertyAddress": "7890 Cedar Lane, Springfield, IL",
+    "stage": "lead",
+    "value": 750000,
+    "commission": 22500,
+    "notes": "Initial consultation completed. Property evaluation in progress. Client motivated to sell quickly.",
+    "createdAt": "2024-01-20T09:15:00.000Z",
+    "closedAt": null
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "id": "1",
+    "title": "Schedule property showing",
+    "description": "Coordinate showing for Sarah Johnson at Oak Street property. She's available weekday evenings or weekends.",
+    "dueDate": "2024-01-24T14:00:00.000Z",
+    "priority": "high",
+    "status": "pending",
+    "dealId": "1",
+    "contactId": "1"
+  },
+  {
+    "id": "2",
+    "title": "Follow up on inspection results",
+    "description": "Contact Michael Chen about inspection report findings and discuss any repair negotiations needed.",
+    "dueDate": "2024-01-25T10:00:00.000Z",
+    "priority": "high",
+    "status": "pending",
+    "dealId": "2",
+    "contactId": "2"
+  },
+  {
+    "id": "3",
+    "title": "Prepare market analysis",
+    "description": "Create comparative market analysis for Jennifer Davis property to determine optimal listing price.",
+    "dueDate": "2024-01-26T16:00:00.000Z",
+    "priority": "medium",
+    "status": "pending",
+    "dealId": "5",
+    "contactId": "5"
+  },
+  {
+    "id": "4",
+    "title": "Submit purchase agreement",
+    "description": "Finalize and submit Emily Rodriguez's purchase agreement for the Maple Avenue condo.",
+    "dueDate": "2024-01-23T12:00:00.000Z",
+    "priority": "high",
+    "status": "completed",
+    "dealId": "3",
+    "contactId": "3"
+  },
+  {
+    "id": "5",
+    "title": "Order title insurance",
+    "description": "Contact title company to order title insurance for the Pine Road property closing.",
+    "dueDate": "2024-01-27T09:00:00.000Z",
+    "priority": "medium",
+    "status": "pending",
+    "dealId": "2",
+    "contactId": "2"
+  },
+  {
+    "id": "6",
+    "title": "Update property photos",
+    "description": "Schedule professional photography for newly listed properties to improve online presence.",
+    "dueDate": "2024-01-28T11:00:00.000Z",
+    "priority": "low",
+    "status": "pending",
+    "dealId": null,
+    "contactId": null
+  },
+  {
+    "id": "7",
+    "title": "Send closing documents",
+    "description": "Email final closing documents to Robert Kim for review before settlement date.",
+    "dueDate": "2024-01-22T15:00:00.000Z",
+    "priority": "medium",
+    "status": "completed",
+    "dealId": "4",
+    "contactId": "4"
+  },
+  {
+    "id": "8",
+    "title": "Check mortgage pre-approval",
+    "description": "Verify Sarah Johnson's mortgage pre-approval status and follow up with lender if needed.",
+    "dueDate": "2024-01-25T13:00:00.000Z",
+    "priority": "medium",
+    "status": "pending",
+    "dealId": "1",
+    "contactId": "1"
+  }
+]

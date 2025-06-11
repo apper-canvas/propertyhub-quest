@@ -1,0 +1,80 @@
+[
+  {
+    "id": "1",
+    "address": "1234 Oak Street, Springfield, IL 62701",
+    "price": 425000,
+    "beds": 4,
+    "baths": 3,
+    "sqft": 2850,
+    "type": "house",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop"
+    ],
+    "description": "Beautiful 4-bedroom colonial home in desirable neighborhood. Recently updated kitchen with granite countertops, hardwood floors throughout main level, and finished basement. Large backyard perfect for entertaining.",
+    "features": ["hardwood floors", "granite counters", "finished basement", "large backyard", "2-car garage"]
+  },
+  {
+    "id": "2",
+    "address": "5678 Maple Avenue, Springfield, IL 62702",
+    "price": 285000,
+    "beds": 3,
+    "baths": 2,
+    "sqft": 1950,
+    "type": "condo",
+    "status": "pending",
+    "images": [
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1600566753051-6d8d9fc67e18?w=800&h=600&fit=crop"
+    ],
+    "description": "Modern 3-bedroom condo with stunning city views. Open floor plan, stainless steel appliances, in-unit laundry, and covered parking. Building amenities include fitness center and rooftop terrace.",
+    "features": ["city views", "stainless appliances", "in-unit laundry", "covered parking", "fitness center"]
+  },
+  {
+    "id": "3",
+    "address": "9012 Pine Road, Springfield, IL 62703",
+    "price": 525000,
+    "beds": 5,
+    "baths": 4,
+    "sqft": 3400,
+    "type": "house",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=800&h=600&fit=crop"
+    ],
+    "description": "Stunning Victorian home with original charm and modern updates. Features include restored hardwood floors, updated electrical and plumbing, gourmet kitchen, and beautifully landscaped gardens.",
+    "features": ["Victorian charm", "restored hardwood", "gourmet kitchen", "landscaped gardens", "original details"]
+  },
+  {
+    "id": "4",
+    "address": "3456 Elm Street, Springfield, IL 62704",
+    "price": 195000,
+    "beds": 2,
+    "baths": 2,
+    "sqft": 1250,
+    "type": "townhouse",
+    "status": "sold",
+    "images": [
+      "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?w=800&h=600&fit=crop"
+    ],
+    "description": "Charming 2-bedroom townhouse perfect for first-time buyers. Recently painted, new carpet, updated bathroom, and private patio. Low HOA fees and great location near shopping and schools.",
+    "features": ["recently updated", "private patio", "low HOA", "near schools", "move-in ready"]
+  },
+  {
+    "id": "5",
+    "address": "7890 Cedar Lane, Springfield, IL 62705",
+    "price": 750000,
+    "beds": 6,
+    "baths": 5,
+    "sqft": 4200,
+    "type": "house",
+    "status": "withdrawn",
+    "images": [
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop"
+    ],
+    "description": "Luxury executive home on 2-acre lot. Features include chef's kitchen, master suite with sitting area, home office, 3-car garage, and swimming pool. Premium finishes throughout.",
+    "features": ["2-acre lot", "chef's kitchen", "master suite", "home office", "swimming pool", "3-car garage"]
+  }
+]
