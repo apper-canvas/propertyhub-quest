@@ -1,8 +1,9 @@
-import Dashboard from '../pages/Dashboard';
-import Contacts from '../pages/Contacts';
-import Properties from '../pages/Properties';
-import Deals from '../pages/Deals';
-import Tasks from '../pages/Tasks';
+import DashboardPage from '@/components/pages/DashboardPage';
+import ContactsPage from '@/components/pages/ContactsPage';
+import PropertiesPage from '@/components/pages/PropertiesPage';
+import DealsPage from '@/components/pages/DealsPage';
+import TasksPage from '@/components/pages/TasksPage';
+import HomePage from '@/components/pages/HomePage'; // Recreated as per instructions, though not directly used in routeArray
 
 export const routes = {
   dashboard: {
@@ -10,35 +11,35 @@ export const routes = {
     label: 'Dashboard',
     path: '/dashboard',
     icon: 'LayoutDashboard',
-    component: Dashboard
+component: DashboardPage
   },
   contacts: {
     id: 'contacts',
     label: 'Contacts',
     path: '/contacts',
     icon: 'Users',
-    component: Contacts
+component: ContactsPage
   },
   properties: {
     id: 'properties',
     label: 'Properties',
     path: '/properties',
     icon: 'Home',
-    component: Properties
+component: PropertiesPage
   },
   deals: {
     id: 'deals',
     label: 'Deals',
     path: '/deals',
     icon: 'Handshake',
-    component: Deals
+component: DealsPage
   },
   tasks: {
     id: 'tasks',
     label: 'Tasks',
     path: '/tasks',
     icon: 'CheckSquare',
-    component: Tasks
+component: TasksPage
   }
 };
 
